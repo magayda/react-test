@@ -1,0 +1,392 @@
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.bodyWrapper {
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.main {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 80px 1fr 200px;
+}
+
+.header {
+  color: red;
+  background: blue;
+}
+.content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-rows: 1fr 1fr;
+}
+
+.mainContent {
+  display: grid;
+  // height: 100%;
+  grid-column: span 3;
+  // justify-self: center;
+  // align-self: center;
+}
+
+.mainContentFlex {
+  display: grid;
+  grid-column: span 3;
+  grid-row: 2 / 3;
+}
+
+.sideContent {
+    background: orange;
+    min-height: 300px;
+    height: 100%;
+    grid-row: span 2;
+    display: grid;
+}
+@media (max-width: 960.25px) {
+  .sideContent {
+    grid-column: span 3;
+  }
+  .articlePhoto {
+    // grid-column: 2 / 3;
+  }
+}
+
+.article {
+  border: 1px solid #333;
+  padding: 10px;
+  margin: 15px 0px;
+  display: grid;
+  img {
+    width: 150px;
+  }
+  .articlePhoto {
+    // height: 75px;
+    grid-area: articlePhoto;
+  }
+  .text {
+    // height: 75px;
+    grid-area: articleText;
+  }
+  .articleBody {
+  }
+  .articleTitle {
+  }
+  .text {
+  }
+  height: 150px;
+  .articlePhoto, .text {
+    place-self: center;
+  }
+}
+
+.article {
+  max-width: 700px;
+  grid-template-columns: 1fr 250px;
+  grid-template-rows: 1fr;
+  grid-template-areas:
+    "articleText articlePhoto";
+}
+
+@media (min-width: 0px) and (max-width: 570px) {
+  .article {
+    height: 100%;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+    "articlePhoto"
+    "articleText";
+    overflow: hidden;
+  }
+  .articlePhoto {
+    align-self: center;
+    justify-self: start !important;
+    grid-column: 1 / 2;
+  }
+}
+.footer {
+  background: red;
+}
+
+.sideContent {
+  // height: 500px;
+  display: grid;
+  grid-auto-rows: min-content; // this sets the row height to the height of every child following // wouldnt want for articles -- be uneven - want a specific height for changing text
+  // grid-auto-rows: 150px;
+}
+
+.ad {
+  padding: 20px;
+  max-width: 300px;
+  place-self: center;
+  // two rows in places where it can fit;
+}
+
+
+
+//flex
+
+.mainContentFlex {
+  display: flex;
+  flex-direction: column;
+  margin: 50px 0px 0px;
+  align-items: center;
+  // justify-content: center;
+}
+.articleFlex {
+  max-width: 700px;
+  border: 2px solid #555;
+  margin: 20px;
+  padding: 10px;
+  display: flex;
+}
+.articleFlexTitle {
+  color: #000;
+  font-size: 1.4rem;
+}
+.articleFlexText {
+  margin: 5px 0px 0px;
+  font-size: 1rem;
+}
+.articleFlexBody {
+  margin: 0px 0px 10px;
+}
+.articleFlexPhoto {
+  display: flex;
+  align-items: center;
+}
+img {
+  width: 150px;
+}
+
+@media (max-width: 500px) {
+  .articleFlex {
+    flex-wrap: wrap;
+  }
+}
+
+
+
+
+// grid
+
+.mainContent {
+  display: grid;
+  grid-column: span 3;
+  grid-auto-rows: minmax(min-content, 120px); // makes it stick to min height of content
+  margin: 50px 0px;
+  grid-gap: 40px 20px;
+}
+
+.articleGrid {
+  place-self: center;
+  max-width: 700px;
+  overflow: hidden;
+  display: grid;
+  border: 2px solid #555;
+  padding: 10px;
+  margin: 0px 20px;
+}
+.articleGridBody {
+  grid-column: 1 / 2;
+  margin: 0px 0px 10px;
+}
+.articleGridPhoto {
+  display: grid;
+  grid-column: 2 / 3;
+}
+.articleGridTitle {
+  color: #000;
+  font-size: 1.4rem;
+}
+.articleGridText {
+  margin: 5px 0px 0px;
+  font-size: 1rem;
+}
+img {
+  width: 150px;
+  place-self: center;
+}
+@media (max-width: 500px) {
+  .articleGrid {
+    grid-template-rows: 1fr 80px;
+  }
+  .articleGridBody {
+    grid-area: 1 / 1 / 2 / 3;
+  }
+  .articleGridPhoto {
+    grid-area: 2 / 1 / 3 / 2;
+    align-self: center;
+    justify-self: start;
+  }
+}
+@media (max-width: 700px) {
+  .mainContent {
+    // grid-template-rows: repeat(5, minmax(0px, auto));
+  }
+}
+
+
+/////
+
+// playing
+
+
+.articleGridText {
+  // max-height: 90px;
+  // overflow: hidden;
+}
+.sideContent {
+  // grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  // grid-template-columns: 1fr 1fr;
+}
+@media (max-width: 959.75px) {
+  .sideContent {
+    // grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center
+  }
+  .sideContent::after {
+    content: '';
+    flex: calc(50% - 40px);
+    max-width: 350px;
+    // flex: 50%;
+    padding: 20px;
+  }
+  .ad {
+    // width: 50%;
+    // width: calc(50% - 40px);
+    // min-width: 250px;
+  }
+  .ad {
+    flex: calc(50% - 40px);
+    max-width: 350px;
+    // margin-right: auto;
+  }
+  .last {
+    // align-self: start;
+    // margin-right: auto;
+
+  }
+}
+
+@media (max-width: 500px) {
+  .ad {
+    // min-width: 70%;
+    flex: 100%;
+    // max-width: 400px;
+  }
+}
+
+// .mainContent {
+//   display: grid;
+//   grid-column: span 3;
+//   // grid-template-rows: repeat(5, minmax(120px, 120px));
+//   // grid-template-rows: repeat(5, minmax(0px, auto));
+//   // grid-auto-rows: 100px;
+//   grid-auto-rows: minmax(min-content, 0px); // makes it stick to min height of content
+//   // grid-auto-rows: 120px;
+//   // justify-content: center;
+//   // grid-auto-rows: 120px;
+//   margin: 50px 0px;
+//   // grid-gap: 20px 20px;
+//   grid-gap: 40px 20px;
+// }
+//
+// .articleGrid {
+//   place-self: center;
+//   max-width: 700px;
+//   // max-height: 70px;
+//   // height: 70px;
+//   // height: 120px;
+//   overflow: hidden;
+//   display: grid;
+//   // grid-template-columns: 1fr minmax(1fr, 150px);
+//   // grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+//   border: 2px solid #555;
+//   padding: 10px;
+//   margin: 0px 20px;
+// }
+// .articleGridBody {
+//   grid-column: 1 / 2;
+//   margin: 0px 0px 10px;
+// }
+// .articleGridPhoto {
+//   display: grid;
+//   grid-column: 2 / 3;
+// }
+// .articleGridTitle {
+//   color: #000;
+//   font-size: 1.4rem;
+// }
+// .articleGridText {
+//   max-height: 36px;
+//   overflow: hidden;
+//   margin: 5px 0px 0px;
+//   font-size: 1rem;
+// }
+// img {
+//   width: 150px;
+//   place-self: center;
+// }
+// @media (max-width: 500px) {
+//   .articleGrid {
+//     grid-template-rows: 1fr 80px;
+//     height: 250px;
+//     .articleGridText {
+//       max-height: 110px;
+//       overflow: hidden;
+//     }
+//     .articleGridTitle {
+//       max-height: 26px;
+//       overflow: hidden;
+//     }
+//   }
+//   .mainContent {
+//     // grid-auto-rows: 250px;
+//     grid-auto-rows: min-content;
+//   }
+//   .articleGridBody {
+//     grid-area: 1 / 1 / 2 / 3;
+//   }
+//   .articleGridPhoto {
+//     grid-area: 2 / 1 / 3 / 2;
+//     align-self: center;
+//     justify-self: start;
+//   }
+// }
+// @media (max-width: 700px) {
+//   .mainContent {
+//     // grid-template-rows: repeat(5, minmax(0px, auto));
+//   }
+// }
+
+// limit height for article lines
+.articleGridText {
+  min-height: 70px;
+  height: auto;
+  hyphens: auto;
+  // width: 100px;
+}
+@media (max-width: 499px) {
+  .articleGridText {
+    min-height: 100px;
+  }
+}
+.articleGrid {
+  // min-width: 325px;
+}
+.topWidth {
+  // width: 100px;
+}
+img {
+  margin-left: 20px;
+}
